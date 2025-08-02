@@ -4,3 +4,77 @@ npm install
 npm start
 http://127.0.0.1:3000/api/boards
 http://127.0.0.1:3000/api/boards?ps=1&pn=5
+
+http://127.0.0.1:3000/api/boards?param=this&that=&message=Hello World
+                                ↑         ↑     ↑
+                                |         |     |
+                            Starts    Separates parameters
+                         query string(used only once)
+
+our json s api in node.js
+we can manage request headers - LinkedIn/Postman
+
+Your Request Headers:
+┌─────────────────┬─────────────┐
+│ Header Name     │ Value       │
+├─────────────────┼─────────────┤
+│ Content-Type    │ text/plain  │
+│ User-Agent      │ MyApp/1.0   │
+└─────────────────┴─────────────┘   ← Header: "Content-Type" = "text/plain"
+						 ← Header: "User-Agent" = "MyApp/1.0"
+# Postman Header Overwriting Example
+
+## BEFORE Applying Preset
+
+**Your Current Request Headers:**
+```
+┌─────────────────┬─────────────────┐
+│ Header Name     │ Value           │
+├─────────────────┼─────────────────┤
+│ Content-Type    │ text/plain      │
+│ User-Agent      │ MyApp/1.0       │
+│ Accept          │ text/html       │
+└─────────────────┴─────────────────┘
+```
+
+## Preset You're Applying
+
+**Preset Name: "LinkedIn API Headers"**
+```
+┌─────────────────┬──────────────────────┐
+│ Header Name     │ Value                │
+├─────────────────┼──────────────────────┤
+│ Content-Type    │ application/json     │  ← CONFLICTS with yours
+│ Authorization   │ Bearer abc123token   │  ← NEW header
+│ Accept          │ application/json     │  ← CONFLICTS with yours
+└─────────────────┴──────────────────────┘
+```
+
+## AFTER Applying Preset (OVERWRITING HAPPENS)
+
+**Final Request Headers:**
+```
+┌─────────────────┬──────────────────────┐
+│ Header Name     │ Value                │ Status
+├─────────────────┼──────────────────────┼─────────────
+│ Content-Type    │ application/json     │ OVERWRITTEN
+│ User-Agent      │ MyApp/1.0            │ KEPT
+│ Accept          │ application/json     │ OVERWRITTEN
+│ Authorization   │ Bearer abc123token   │ ADDED
+└─────────────────┴──────────────────────┘
+```
+
+## What Happened?
+
+### ❌ OVERWRITTEN (Same names)
+- `Content-Type: text/plain` → `Content-Type: application/json`
+- `Accept: text/html` → `Accept: application/json`
+
+### ✅ KEPT (No conflict)
+- `User-Agent: MyApp/1.0` (unchanged - preset didn't have this header)
+
+### ➕ ADDED (New header)
+- `Authorization: Bearer abc123token` (new - you didn't have this before)
+
+## Key Rule
+**When header names match: Preset value REPLACES your original value**
