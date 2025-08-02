@@ -1,0 +1,6 @@
+C:\Users\USER\Downloads\Ex_Files_Introducing_Postman\Ex_Files_Introducing_Postman\Exercise Files\api\node
+
+npm install
+npm start
+http://127.0.0.1:3000/api/boards
+http://127.0.0.1:3000/api/boards?ps=1&pn=5
