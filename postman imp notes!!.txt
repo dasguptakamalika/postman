@@ -1,3 +1,7 @@
+Newman 
+cURL
+
+
 C:\Users\USER\Downloads\Ex_Files_Introducing_Postman\Ex_Files_Introducing_Postman\Exercise Files\api\node
 
 npm install
@@ -78,3 +82,25 @@ Your Request Headers:
 
 ## Key Rule
 **When header names match: Preset value REPLACES your original value**
+
+POST
+http://127.0.0.1:3000/api/boards/SEARCH
+GO TO BODY-> FORM DATA -> VALUE (FILE OR DATA) 
+SELECT RAW -> JSON
+
+set a token
+------------
+
+how to create a post
+---------------------
+
+
+The **User-Agent** header tells the server which tool or browser is making the request.
+Postman uses its own default value, but you can **change it** to pretend you're another tool (like Chrome).
+To do that, just add or edit the `User-Agent` key in the **Headers** tab of your request.
+Applying a header preset in Postman does not replace existing headers — it adds to them.
+
+However, if a preset contains a header with the same name as one already in your request, it will overwrite that specific header only. Other headers remain unchanged.
+
+
+
