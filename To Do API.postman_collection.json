@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "7cb24848-2bad-4b1f-8fe0-6d1747d8d7db",
+		"name": "To Do API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47268538",
+		"_collection_link": "https://www.postman.com/kamalika-dasgupta95-8016985/workspace/todo-api-testing-workspace/collection/47268538-7cb24848-2bad-4b1f-8fe0-6d1747d8d7db?action=share&source=collection_link&creator=47268538"
+	},
+	"item": [
+		{
+			"name": "Get All ToDos",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Post All ToDos",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
