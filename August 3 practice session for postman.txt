@@ -1,0 +1,119 @@
+ 1. Custom Headers Challenge
+🧪 Goal:
+Send a GET request with the following headers:
+
+Content-Type: application/json
+
+Accept: application/xml
+
+User-Agent: KamalikaBot/1.0
+
+🧠 How:
+Create a new GET request:
+{{base_url}}/posts
+
+Go to Headers tab
+
+Add:
+
+yaml
+Copy
+Edit
+Key: Content-Type       → Value: application/json
+Key: Accept             → Value: application/xml
+Key: User-Agent         → Value: KamalikaBot/1.0
+✅ Expected:
+You’ll still get JSON back (JSONPlaceholder doesn't support XML)
+
+But this simulates real API negotiation logic
+
+🔹 2. Dynamic Variables in Pre-request
+🧪 Goal:
+Add a timestamp to each request as a custom header
+
+💡 Pre-request Script:
+js
+Copy
+Edit
+pm.variables.set("current_timestamp", new Date().toISOString());
+💡 Headers Tab:
+makefile
+Copy
+Edit
+Key: X-Timestamp  
+Value: {{current_timestamp}}
+This simulates what real APIs log in request metadata (timing, trace ID, etc.)
+
+🔹 3. Chaining Requests
+🧪 Goal:
+Extract id from POST response and use it in a GET request
+
+POST Request:
+POST {{base_url}}/posts
+
+json
+Copy
+Edit
+{
+  "title": "Auto chain",
+  "body": "This post was created just now",
+  "userId": 1
+}
+Tests tab (Post-response):
+js
+Copy
+Edit
+let jsonData = pm.response.json();
+pm.environment.set("new_post_id", jsonData.id);
+GET Request:
+GET {{base_url}}/posts/{{new_post_id}}
+
+This simulates what you'd do in E2E API tests and automation chains.
+
+🔹 4. Data-Driven Testing (Collection Runner + CSV)
+🧪 Goal:
+Run the same POST request with 5 different titles
+
+How:
+Prepare a CSV:
+
+csv
+Copy
+Edit
+title,body
+First Post,Hello 1
+Second Post,Hello 2
+Third Post,Hello 3
+In the POST /posts request body:
+
+json
+Copy
+Edit
+{
+  "title": "{{title}}",
+  "body": "{{body}}",
+  "userId": 1
+}
+Run the collection with this CSV in Collection Runner
+
+✅ Simulates real-world bulk API testing!
+
+🔹 5. Mock Server (Optional)
+You can also create a mock server in Postman to simulate endpoints before the backend is built.
+Let me know if you want to try this — it’s optional, but cool for interviews.
+
+🔹 6. Monitor (Cloud-Based Test Runs)
+Set up a Monitor to run your collection every hour/day and send alerts if any test fails.
+This is how teams monitor production APIs.
+
+🔹 7. Newman + CI/CD
+We already talked about Newman — when you get to real CI/CD, you’ll use:
+
+bash
+Copy
+Edit
+newman run your_collection.json -e your_env.json -r cli,html
+Let me know when you're ready to integrate it with Jenkins/GitHub Actions.
+
+🔹 8. Postman Flows (Visual Programming)
+A drag-and-drop way to chain APIs (less common in companies, more for demo/mock APIs)
