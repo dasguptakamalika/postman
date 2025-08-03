@@ -102,5 +102,5 @@ Applying a header preset in Postman does not replace existing headers — it add
 
 However, if a preset contains a header with the same name as one already in your request, it will overwrite that specific header only. Other headers remain unchanged.
 
-
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZX0.Hk2saBvzG8J9CUvCxr-nbiQYZ-RBSHaGLZn3lXazrYk token
 
