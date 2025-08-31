@@ -12,7 +12,7 @@
 				{
 					"name": "Authenticate",
 					"request": {
-						"auth": {
+						"auth": { 
 							"type": "noauth"
 						},
 						"method": "POST",
