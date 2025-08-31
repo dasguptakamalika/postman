@@ -10,7 +10,7 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "Authenticate",
+					"name": "Authenticate", 
 					"request": {
 						"auth": { 
 							"type": "noauth"
