@@ -11,7 +11,7 @@ User-Agent: KamalikaBot/1.0
 🧠 How:
 Create a new GET request:
 {{base_url}}/posts
-
+ 
 Go to Headers tab
 
 Add:
@@ -117,3 +117,4 @@ Let me know when you're ready to integrate it with Jenkins/GitHub Actions.
 
 🔹 8. Postman Flows (Visual Programming)
 A drag-and-drop way to chain APIs (less common in companies, more for demo/mock APIs)
+
